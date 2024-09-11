@@ -1,5 +1,10 @@
 # rest-api-tests
 
+## Run the fast api app
+```
+fastapi dev main.py
+```
+
 ## Run the tests with coverage
 ```
 coverage run -m pytest
