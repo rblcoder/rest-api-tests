@@ -1,5 +1,7 @@
 # rest-api-tests
 
+[![Python CI](https://github.com/rblcoder/rest-api-tests/actions/workflows/test.yml/badge.svg)](https://github.com/rblcoder/rest-api-tests/actions/workflows/test.yml)
+
 ## Run the fast api app
 ```
 fastapi dev main.py
@@ -8,7 +10,7 @@ fastapi dev main.py
 ## Run the tests with coverage
 ```
 coverage run -m pytest
-coverage report -m
+coverage report -m --omit="*/test*"
 ```
 
 ## Generate html report
