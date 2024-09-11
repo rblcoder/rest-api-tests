@@ -20,3 +20,5 @@ coverage html
 ```
 coverage html --omit="*/test*" -d tests/coverage
 ```
+
+## Access the docs by adding redoc or docs to url
