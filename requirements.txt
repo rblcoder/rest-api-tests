@@ -4,4 +4,5 @@ sqlalchemy
 pytest 
 pytest-cov 
 coverage
-fastapi[standard]
+httpx
+fastapi-cli

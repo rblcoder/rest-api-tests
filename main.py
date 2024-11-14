@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, APIRouter
 from pydantic import BaseModel
 from typing import List
 from sqlalchemy import create_engine, Column, Integer, String
@@ -6,6 +6,13 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 app = FastAPI()
+
+router = APIRouter(
+    prefix="/users",
+    tags=["users"],
+    responses={404: {"description": "Not found"}},
+)
+
 
 DATABASE_URL = "sqlite:///./test.db"
 engine = create_engine(DATABASE_URL)
@@ -27,7 +34,7 @@ class UserCreate(BaseModel):
 class UserResponse(UserCreate):
     id: int
 
-@app.post("/users/", response_model=UserResponse)
+@router.post("/", response_model=UserResponse)
 def create_user(user: UserCreate):
     db = SessionLocal()
     db_user = User(name=user.name, email=user.email)
@@ -37,14 +44,14 @@ def create_user(user: UserCreate):
     db.close()
     return db_user
 
-@app.get("/users/", response_model=List[UserResponse])
+@router.get("/", response_model=List[UserResponse])
 def read_users(skip: int = 0, limit: int = 10):
     db = SessionLocal()
     users = db.query(User).offset(skip).limit(limit).all()
     db.close()
     return users
 
-@app.get("/users/{user_id}", response_model=UserResponse)
+@router.get("/{user_id}", response_model=UserResponse)
 def read_user(user_id: int):
     db = SessionLocal()
     user = db.query(User).filter(User.id == user_id).first()
@@ -53,7 +60,7 @@ def read_user(user_id: int):
         raise HTTPException(status_code=404, detail="User not found")
     return user
 
-@app.put("/users/{user_id}", response_model=UserResponse)
+@router.put("/{user_id}", response_model=UserResponse)
 def update_user(user_id: int, user: UserCreate):
     db = SessionLocal()
     db_user = db.query(User).filter(User.id == user_id).first()
@@ -66,7 +73,7 @@ def update_user(user_id: int, user: UserCreate):
     db.close()
     return db_user
 
-@app.delete("/users/{user_id}")
+@router.delete("/{user_id}")
 def delete_user(user_id: int):
     db = SessionLocal()
     db_user = db.query(User).filter(User.id == user_id).first()
@@ -76,3 +83,5 @@ def delete_user(user_id: int):
     db.commit()
     db.close()
     return {"detail": "User deleted"}
+
+app.include_router(router)
