@@ -1,5 +1,7 @@
 from fastapi.testclient import TestClient
-from main import app, Base, engine, SessionLocal, User
+from main import app
+from .users.models import Base
+from database import engine, SessionLocal
 
 client = TestClient(app)
 
@@ -62,4 +64,3 @@ def test_delete_user_error():
     user_id = "10"
     response = client.delete(f"/users/{user_id}")
     assert response.status_code == 404
-    
