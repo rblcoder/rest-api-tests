@@ -5,9 +5,10 @@ from typing import List
 from users.schema import UserCreate, UserResponse
 from users.models import User
 from database import SessionLocal
+from constants import version
 
 router = APIRouter(
-    prefix="/users",
+    prefix=f"/{version}/users",
     tags=["users"],
     responses={404: {"description": "Not found"}},
 )
