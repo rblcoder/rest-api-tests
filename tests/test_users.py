@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 from main import app
-from .users.models import Base
+from users.models import Base
 from database import engine, SessionLocal
 
 client = TestClient(app)

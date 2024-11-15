@@ -1,7 +1,19 @@
 # rest-api-tests
 
+## Virtual environment
+```
+virtualenv venv
+
+source venv/bin/activate
+
+pip install -r requirements.txt
+```
+
+
 ## Run the fast api app
 ```
+export PYTHONPATH=.
+
 fastapi dev main.py
 ```
 
@@ -21,12 +33,10 @@ coverage html
 coverage html --omit="*/test*" -d tests/coverage
 ```
 
-## Access the docs by adding redoc or docs to url
+## Access the docs by adding redoc or docs# to url
 
+## Additional info
 
-## Virtual environment
+https://sqlpad.io/tutorial/absolute-vs-relative-python-imports/
 
-virtualenv venv
-
-source venv/bin/activate
-
+export PYTHONPATH=.
