@@ -14,7 +14,7 @@ pip install -r requirements.txt
 ```
 export PYTHONPATH=.
 
-fastapi dev main.py
+fastapi dev src/main.py
 ```
 
 ## Run the tests with coverage
@@ -38,5 +38,7 @@ coverage html --omit="*/test*" -d tests/coverage
 ## Additional info
 
 https://sqlpad.io/tutorial/absolute-vs-relative-python-imports/
+
+https://stackoverflow.com/questions/78505239/fastapi-app-throws-modulenotfound-error-on-startup
 
 export PYTHONPATH=.
