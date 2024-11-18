@@ -1,8 +1,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from src.config import Settings
+from src.config import Config
 
 # DATABASE_URL = "sqlite:///./test.db"
-DATABASE_URL = Settings().DATABASE_URL
+DATABASE_URL = Config.DATABASE_URL
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
