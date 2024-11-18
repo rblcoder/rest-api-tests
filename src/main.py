@@ -4,6 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 from src.users.models import Base
 from src.users.routes import router as user_router
+from src.constants import version
 
 DATABASE_URL = "sqlite:///./test.db"
 
@@ -13,6 +14,6 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base.metadata.create_all(bind=engine)
 
 
-app = FastAPI()
+app = FastAPI(title = "Rest api service", description = "Rest api service", version = version)
 
 app.include_router(user_router)

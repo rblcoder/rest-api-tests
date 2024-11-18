@@ -6,3 +6,5 @@ pytest-cov
 coverage
 httpx
 fastapi-cli
+pydantic-settings
+asyncpg

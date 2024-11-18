@@ -42,3 +42,7 @@ https://sqlpad.io/tutorial/absolute-vs-relative-python-imports/
 https://stackoverflow.com/questions/78505239/fastapi-app-throws-modulenotfound-error-on-startup
 
 export PYTHONPATH=.
+
+## Sample .env
+
+DATABASE_URL="sqlite:///./test.db"
