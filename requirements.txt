@@ -8,3 +8,4 @@ httpx
 fastapi-cli
 pydantic-settings
 asyncpg
+aiosqlite
