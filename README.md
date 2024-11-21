@@ -41,6 +41,8 @@ https://sqlpad.io/tutorial/absolute-vs-relative-python-imports/
 
 https://stackoverflow.com/questions/78505239/fastapi-app-throws-modulenotfound-error-on-startup
 
+https://medium.com/@navinsharma9376319931/mastering-fastapi-crud-operations-with-async-sqlalchemy-and-postgresql-3189a28d06a2
+
 export PYTHONPATH=.
 
 ## Sample .env
