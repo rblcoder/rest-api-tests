@@ -16,7 +16,7 @@ class UserService:
         return db_user
 
     async def read_users(self, skip: int = 0, limit: int = 10):
-        result = await self.db.scalars(select(User).offset(skip).limit(limit))
+        result = await self.db.scalars(select(User).order_by(User.id.desc()).offset(skip).limit(limit))
         return result.all()
 
     async def read_user(self, user_id: int):
