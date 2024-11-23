@@ -6,10 +6,14 @@ from sqlalchemy.ext.asyncio import AsyncEngine
 from alembic import context
 from src.users.models import Base  # Import your Base model
 
+from src.config import Config
+
+database_url = Config.DATABASE_URL
+
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
-
+config.set_main_option('sqlalchemy.url', database_url)
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
 fileConfig(config.config_file_name)
@@ -56,7 +60,7 @@ async def run_migrations_online():
             config.get_section(config.config_ini_section),
             prefix="sqlalchemy.",
             poolclass=pool.NullPool,
-            future=True,
+            future=True
         )
     )
 
