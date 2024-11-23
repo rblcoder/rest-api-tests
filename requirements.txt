@@ -9,3 +9,4 @@ fastapi-cli
 pydantic-settings
 asyncpg
 aiosqlite
+alembic
