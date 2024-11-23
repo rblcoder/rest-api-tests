@@ -53,6 +53,8 @@ DATABASE_URL="sqlite:///./test.db"
 
 alembic init alembic
 
+alembic init alembic -t async migrations
+
 alembic revision --autogenerate -m "Initial migration"
 
 alembic upgrade head
